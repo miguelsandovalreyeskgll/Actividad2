@@ -116,9 +116,7 @@ Coloca las capturas dentro de la carpeta `img`.
 
 ## Video
 
-Agrega aquí el enlace de tu video de máximo 1 minuto.
 
-El video debe mostrar el problema que resuelve la librería, cómo se usa y el resultado funcionando.
 
 ## Estructura del proyecto
 
