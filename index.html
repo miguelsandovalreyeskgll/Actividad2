@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utileria JS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/utileria.js"></script>
+</head>
+
+<body>
+    <h1>Formulario de Validación</h1>
+
+    <form onsubmit="return validarFormulario()">
+        <label>Nombre</label>
+        <input type="text" id="nombre">
+        <br>
+
+        <label>Correo</label>
+        <input type="text" id="correo">
+        <br>
+
+        <label>Teléfono</label>
+        <input type="text" id="numero">
+        <br>
+
+        <label>Fecha de nacimiento</label>
+        <input type="date" id="fechaNacimiento">
+        <br>
+
+        <button type="submit">Validar</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <div id="modal" class="modal">
+        <div class="modal-contenido">
+            <h2>Edad calculada</h2>
+            <p id="edadCalculada"></p>
+            <button onclick="cerrarModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <p><a href="login.html">Ir al login</a></p>
+</body>
+
+</html>

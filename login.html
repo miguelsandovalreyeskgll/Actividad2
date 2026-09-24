@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/utileria.js"></script>
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    <form onsubmit="return validarLogin()">
+        <label>Correo</label>
+        <input type="text" id="correoLogin">
+        <br>
+
+        <label>Contraseña</label>
+        <input type="password" id="password">
+        <br>
+
+        <button type="submit">Ingresar</button>
+    </form>
+
+    <p id="resultadoLogin"></p>
+
+    <p><a href="index.html">Volver al formulario</a></p>
+</body>
+
+</html>
