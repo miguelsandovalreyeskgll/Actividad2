@@ -1,144 +1,175 @@
 # Actividad 2 - Librería utileria.js
 
-## Portada
-
 **Nombre:** Sandoval Reyes Miguel  
 **Materia:** Programación Web  
-**Proyecto:** Librería `utileria.js`
+**Actividad:** Librería de utilidades en JavaScript
 
-Esta librería reúne funciones de validación y apoyo para formularios. Permite validar correos, nombres, longitud de números, edad, mayoría de edad y contraseñas. También incluye funciones adicionales para validar teléfonos y limpiar espacios de un texto.
+## Descripción
+
+Este proyecto contiene una librería en JavaScript puro para reutilizar validaciones comunes en formularios. La librería permite validar correos, nombres, longitudes, fechas de nacimiento y contraseñas. También incluye dos funciones adicionales para validar teléfonos y medir la fortaleza de una contraseña.
+
+El proyecto utiliza la librería en un formulario de registro, una ventana modal para mostrar la edad calculada y una página `login.html`.
 
 ## Instalación
 
-Para utilizar la librería se debe enlazar el archivo JavaScript en el HTML:
-
-```html
-<script src="utileria.js"></script>
-```
-
-En este proyecto el archivo se encuentra dentro de la carpeta `js`, por lo que se utiliza:
+La librería se carga antes del archivo JavaScript propio de cada página:
 
 ```html
 <script src="js/utileria.js"></script>
+```
+
+En el formulario principal también se carga:
+
+```html
+<script src="js/index.js" defer></script>
+```
+
+En el login se utiliza:
+
+```html
+<script src="js/login.js" defer></script>
 ```
 
 ## Funciones obligatorias
 
 ### validarCorreo(correo)
 
-Valida que un correo tenga un formato básico correcto.
+Valida que el texto tenga un formato básico de correo electrónico.
 
 ```javascript
-let resultado = validarCorreo("usuario@correo.com");
-console.log(resultado);
+validarCorreo("usuario@gmail.com");
 ```
 
 ### soloLetras(texto)
 
-Valida que un texto contenga solamente letras, espacios y vocales acentuadas.
+Valida que el texto contenga únicamente letras, espacios, acentos y la letra ñ.
 
 ```javascript
-let resultado = soloLetras("Miguel Sandoval");
-console.log(resultado);
+soloLetras("Miguel Sandoval");
 ```
 
 ### validarLongitud(numero, maxLongitud)
 
-Valida que un número no supere la longitud máxima indicada.
+Comprueba que el valor no supere la longitud máxima indicada.
 
 ```javascript
-let resultado = validarLongitud("9511234567", 10);
-console.log(resultado);
+validarLongitud("9511234567", 10);
 ```
 
 ### calcularEdad(fechaNacimiento)
 
-Calcula la edad de una persona a partir de su fecha de nacimiento.
+Calcula la edad actual de una persona a partir de su fecha de nacimiento.
 
 ```javascript
-let edad = calcularEdad("2005-08-15");
-console.log(edad);
+calcularEdad("2004-05-20");
 ```
 
 ### esMayorDeEdad(fechaNacimiento)
 
-Valida si una persona tiene 18 años o más.
+Devuelve `true` cuando la persona tiene 18 años o más y `false` cuando es menor.
 
 ```javascript
-let resultado = esMayorDeEdad("2005-08-15");
-console.log(resultado);
+esMayorDeEdad("2004-05-20");
 ```
 
 ### validarPassword(password)
 
-Valida que una contraseña tenga mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.
+Valida que la contraseña tenga mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.
 
 ```javascript
-let resultado = validarPassword("Clave123!");
-console.log(resultado);
+validarPassword("Prueba123!");
 ```
 
 ## Funciones adicionales
 
 ### validarTelefono(telefono)
 
-Valida que un número telefónico tenga exactamente 10 dígitos.
+Comprueba que el teléfono tenga exactamente 10 dígitos.
 
 ```javascript
-let resultado = validarTelefono("9511234567");
-console.log(resultado);
+validarTelefono("9511234567");
 ```
 
-### limpiarEspacios(texto)
+### medirFortalezaPassword(password)
 
-Quita los espacios que se encuentren al inicio y al final de un texto.
+Mide cuántas reglas cumple una contraseña y devuelve `débil`, `media` o `fuerte`.
 
 ```javascript
-let texto = limpiarEspacios("   Miguel Sandoval   ");
-console.log(texto);
+medirFortalezaPassword("Prueba123!");
 ```
 
 ## Integración
 
-El archivo `index.html` contiene un formulario que utiliza las funciones de validación de la librería.
+El archivo `index.html` usa las funciones de la librería para validar nombre, correo, teléfono, fecha de nacimiento y contraseña.
 
-También incluye una ventana modal que muestra la edad calculada de la persona.
+Si todos los campos tienen un formato correcto, se calcula la edad y se abre una ventana modal. Si la persona tiene 18 años o más, se indica que puede continuar. Si es menor de edad, el modal muestra la edad calculada y señala que el acceso está restringido.
 
-El archivo `login.html` utiliza las funciones:
-
-```javascript
-validarCorreo();
-validarPassword();
-```
-
-para validar el correo y la contraseña ingresados.
+El archivo `login.html` utiliza `validarCorreo()` y `validarPassword()` para comprobar el formato de los datos ingresados.
 
 ## Estructura del proyecto
 
 ```text
-/utileria
+Actividad2/
 ├── README.md
 ├── index.html
 ├── login.html
 ├── css/
 │   └── styles.css
 ├── js/
-│   └── utileria.js
+│   ├── utileria.js
+│   ├── index.js
+│   └── login.js
 └── img/
 ```
 
-## Capturas de pantalla
+## Capturas
+
+### Formulario de registro
+
+Vista inicial del formulario de registro con los campos de nombre, correo electrónico, teléfono, fecha de nacimiento y contraseña.
+
+![Formulario de registro](img/im1.png)
+
+### Contraseña válida y fortaleza
+
+Ejemplo del formulario con una contraseña que cumple los requisitos. La aplicación muestra su nivel de fortaleza como **fuerte**.
+
+![Contraseña válida y fortaleza](img/im2.png)
+
+### Modal de registro validado
+
+Cuando los datos son correctos y la persona cumple con la edad requerida, se muestra una ventana modal con la edad calculada y el resultado de la validación.
+
+![Modal de registro validado](img/im3.png)
+
+### Login con datos válidos
+
+Ejemplo de `login.html` con un correo y una contraseña que cumplen con el formato solicitado.
+
+![Login con datos válidos](img/im4.png)
+
+### Validaciones del formulario
+
+Ejemplo de las validaciones mostradas directamente en el formulario cuando el nombre, correo, teléfono o contraseña no cumplen con los requisitos.
+
+![Validaciones del formulario](img/im5.png)
+
+### Login con datos inválidos
+
+Ejemplo del login mostrando los mensajes correspondientes cuando el correo y la contraseña tienen un formato incorrecto.
+
+![Login con datos inválidos](img/im6.png)
 
 ## Video
 
+Video demostrativo del funcionamiento de la librería y sus validaciones:
 
-## GitHub Pages
-
-
-
+https://youtu.be/QHYWzwfksAY
 
 ## Repositorio
 
+https://github.com/miguelsandovalreyeskgll/Actividad2
 
+## GitHub Pages
 
-
+https://miguelsandovalreyeskgll.github.io/Actividad2/
