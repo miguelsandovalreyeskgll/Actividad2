@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - Utilería JS</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/utileria.js"></script>
+    <script src="js/login.js" defer></script>
 </head>
-
 <body>
-    <h1>Login</h1>
+    <main class="tarjeta login">
+        <div class="encabezado">
+            <h1>Iniciar sesión</h1>
+            <p>Ingresa un correo y una contraseña con formato válido.</p>
+        </div>
 
-    <form onsubmit="return validarLogin()">
-        <label>Correo</label>
-        <input type="text" id="correoLogin">
-        <br>
+        <form id="formLogin" novalidate>
+            <label for="correoLogin">Correo electrónico</label>
+            <input type="email" id="correoLogin" placeholder="usuario@correo.com">
+            <span id="errorCorreoLogin" class="error"></span>
 
-        <label>Contraseña</label>
-        <input type="password" id="password">
-        <br>
+            <label for="passwordLogin">Contraseña</label>
+            <input type="password" id="passwordLogin" placeholder="Ejemplo123!">
+            <span id="errorPasswordLogin" class="error"></span>
 
-        <button type="submit">Ingresar</button>
-    </form>
+            <p id="mensajeLogin" class="mensaje"></p>
 
-    <p id="resultadoLogin"></p>
+            <button type="submit">Validar acceso</button>
+        </form>
 
-    <p><a href="index.html">Volver al formulario</a></p>
+        <p class="enlace">¿No tienes cuenta? <a href="index.html">Volver al registro</a></p>
+    </main>
 </body>
-
 </html>

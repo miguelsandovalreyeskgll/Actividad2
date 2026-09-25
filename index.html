@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utileria JS</title>
+    <title>Registro - Utilería JS</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/utileria.js"></script>
+    <script src="js/index.js" defer></script>
 </head>
-
 <body>
-    <h1>Formulario de Validación</h1>
-
-    <form onsubmit="return validarFormulario()">
-        <label>Nombre</label>
-        <input type="text" id="nombre">
-        <br>
-
-        <label>Correo</label>
-        <input type="text" id="correo">
-        <br>
-
-        <label>Teléfono</label>
-        <input type="text" id="numero">
-        <br>
-
-        <label>Fecha de nacimiento</label>
-        <input type="date" id="fechaNacimiento">
-        <br>
-
-        <button type="submit">Validar</button>
-    </form>
-
-    <p id="resultado"></p>
-
-    <div id="modal" class="modal">
-        <div class="modal-contenido">
-            <h2>Edad calculada</h2>
-            <p id="edadCalculada"></p>
-            <button onclick="cerrarModal()">Cerrar</button>
+    <main class="tarjeta">
+        <div class="encabezado">
+            <h1>Crear registro</h1>
+            <p>Completa tus datos para validar el formulario.</p>
         </div>
-    </div>
 
-    <p><a href="login.html">Ir al login</a></p>
+        <form id="formRegistro" novalidate>
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" placeholder="Miguel Sandoval">
+            <span id="errorNombre" class="error"></span>
+
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="usuario@correo.com">
+            <span id="errorCorreo" class="error"></span>
+
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" maxlength="10" placeholder="9511234567">
+            <span id="errorTelefono" class="error"></span>
+
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <input type="date" id="fechaNacimiento">
+            <span id="errorFecha" class="error"></span>
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="Mínimo 8 caracteres">
+            <div class="barra-fondo">
+                <div id="barraPassword" class="barra-nivel"></div>
+            </div>
+            <span id="fortalezaPassword" class="fortaleza"></span>
+            <span id="errorPassword" class="error"></span>
+
+            <p id="mensajeRegistro" class="mensaje"></p>
+
+            <button type="submit">Validar registro</button>
+        </form>
+
+        <p class="enlace">¿Ya tienes cuenta? <a href="login.html">Ir al login</a></p>
+    </main>
+
+    <dialog id="modalEdad">
+        <h2 id="tituloModal">Resultado</h2>
+        <p>Edad calculada: <strong id="edadResultado"></strong></p>
+        <p id="estadoEdad"></p>
+        <button type="button" id="cerrarModal">Cerrar</button>
+    </dialog>
 </body>
-
 </html>
